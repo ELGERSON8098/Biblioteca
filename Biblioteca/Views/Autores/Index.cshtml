@@ -1,0 +1,44 @@
+@model IEnumerable<Biblioteca.Models.Autor>
+
+@{
+    ViewData["Title"] = "Autores";
+}
+
+<div class="container">
+    <h2 class="mt-3 mb-3">Autores</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Nacionalidad</th>
+                <th>Fecha de nacimiento</th>
+                <th>Activo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var autor in Model)
+            {
+                <tr>
+                    <td>@autor.ID</td>
+                    <td>@autor.Nombre</td>
+                    <td>@autor.Apellido</td>
+                    <td>@autor.Nacionalidad</td>
+                    <td>@autor.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if (autor.Activo)
+                        {
+                            <span class="badge bg-success">Activo</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Inactivo</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
