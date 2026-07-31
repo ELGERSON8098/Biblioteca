@@ -1,0 +1,30 @@
+@model Biblioteca.Models.Autor
+
+@{
+    ViewData["Title"] = "Eliminar Autor";
+}
+
+<div class="container">
+    <h2 class="mt-3 mb-3">Eliminar Autor</h2>
+
+    <div class="alert alert-warning">
+        <p>¿Está seguro que desea eliminar el siguiente autor?</p>
+    </div>
+
+    <dl class="row">
+        <dt class="col-sm-3">Nombre</dt>
+        <dd class="col-sm-9">@Model.Nombre @Model.Apellido</dd>
+
+        <dt class="col-sm-3">Nacionalidad</dt>
+        <dd class="col-sm-9">@Model.Nacionalidad</dd>
+
+        <dt class="col-sm-3">Fecha de nacimiento</dt>
+        <dd class="col-sm-9">@Model.FechaNacimiento.ToString("dd/MM/yyyy")</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="ID" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
+    </form>
+</div>
