@@ -11,6 +11,12 @@ namespace Biblioteca.Controllers
             return View();
         }
 
+        // Página Acerca de (About) simple
+        public IActionResult About()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

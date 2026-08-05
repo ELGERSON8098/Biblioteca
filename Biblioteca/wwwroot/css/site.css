@@ -60,3 +60,35 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+/* Estilos para About y componentes personalizados */
+.about-page h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.about-page h2 {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+.about-page p, .about-page li {
+  line-height: 1.6;
+}
+
+/* Pequeños ajustes para las cards en la home */
+.card .card-title {
+  font-weight: 600;
+}
+
+/* Diseño responsivo adicional */
+@media (max-width: 576px) {
+  .about-page h1 { font-size: 1.5rem; }
+  .carousel-caption { display: none; }
+}
+
+@media (min-width: 992px) {
+  .main-hero .hero-title { font-size: 3.5rem; }
+}
+
+/* Contraste y espaciado para secciones dentro de About */
+.about-header { border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem; }
+.about-page address { font-style: normal; }

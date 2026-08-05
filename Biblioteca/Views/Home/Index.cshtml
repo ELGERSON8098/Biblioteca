@@ -2,11 +2,99 @@
     ViewData["Title"] = "Inicio";
 }
 
-<div class="container main-hero">
+<div class="container mt-4">
+    <!-- Carousel (componente de Bootstrap) -->
+    <div id="libraryCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://via.placeholder.com/1200x400?text=Biblioteca+Virtual" class="d-block w-100" alt="Biblioteca">
+                <div class="carousel-caption d-none d-md-block text-dark bg-light bg-opacity-75 rounded p-2">
+                    <h5>Bienvenido a la Biblioteca Virtual</h5>
+                    <p>Encuentra libros, autores y recursos digitales.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x400?text=Coleccion+de+Libros" class="d-block w-100" alt="Colección">
+                <div class="carousel-caption d-none d-md-block text-dark bg-light bg-opacity-75 rounded p-2">
+                    <h5>Colecciones destacadas</h5>
+                    <p>Explora categorías y descubre nuevas lecturas.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x400?text=Servicios+Bibliotecarios" class="d-block w-100" alt="Servicios">
+                <div class="carousel-caption d-none d-md-block text-dark bg-light bg-opacity-75 rounded p-2">
+                    <h5>Servicios</h5>
+                    <p>Préstamo, consulta y recursos en línea.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#libraryCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#libraryCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    <!-- Tarjetas con información rápida -->
+    <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Libros</h5>
+                    <p class="card-text">Catálogo con títulos, descripciones y disponibilidad.</p>
+                    <a class="btn btn-primary" href="/Libros">Ver catálogo</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Autores</h5>
+                    <p class="card-text">Biografías y obras de autores destacados.</p>
+                    <a class="btn btn-outline-primary" href="/Autores">Explorar autores</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Categorías</h5>
+                    <p class="card-text">Encuentra libros por temática y género.</p>
+                    <a class="btn btn-primary" href="#">Ver categorías</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Servicios</h5>
+                    <p class="card-text">Préstamo, renovaciones y consulta en sala.</p>
+                    <a class="btn btn-outline-primary" href="#">Más info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección informativa con cards más grandes -->
     <div class="row">
-        <div class="col-md-6 offset-md-6 text-md-end">
-            <h1 class="hero-title">Biblioteca De Hardware</h1>
-            <p class="hero-sub">Bienvenidos a la biblioteca Con Asp.Net.Core usando MVC</p>
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4 class="card-title">Sobre nuestra Biblioteca</h4>
+                    <p class="card-text">Somos una biblioteca virtual creada como ejemplo didáctico. Disponemos de recursos electrónicos y físicos, y trabajamos para facilitar el acceso a la lectura y la investigación.</p>
+                    <p class="card-text"><small class="text-muted">Abierta: Lunes a Viernes, 9:00 - 18:00</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">Novedades</a>
+                <a href="#" class="list-group-item list-group-item-action">Eventos</a>
+                <a href="#" class="list-group-item list-group-item-action">Contacto</a>
+            </div>
         </div>
     </div>
 </div>
