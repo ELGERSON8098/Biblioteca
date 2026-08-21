@@ -1,99 +1,183 @@
 ﻿@{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "Inicio - Biblioteca Virtual";
 }
 
-<div class="container mt-4">
-    <!-- Carousel (componente de Bootstrap) -->
-    <div id="libraryCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://via.placeholder.com/1200x400?text=Biblioteca+Virtual" class="d-block w-100" alt="Biblioteca">
-                <div class="carousel-caption d-none d-md-block text-dark bg-light bg-opacity-75 rounded p-2">
-                    <h5>Bienvenido a la Biblioteca Virtual</h5>
-                    <p>Encuentra libros, autores y recursos digitales.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://via.placeholder.com/1200x400?text=Coleccion+de+Libros" class="d-block w-100" alt="Colección">
-                <div class="carousel-caption d-none d-md-block text-dark bg-light bg-opacity-75 rounded p-2">
-                    <h5>Colecciones destacadas</h5>
-                    <p>Explora categorías y descubre nuevas lecturas.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://via.placeholder.com/1200x400?text=Servicios+Bibliotecarios" class="d-block w-100" alt="Servicios">
-                <div class="carousel-caption d-none d-md-block text-dark bg-light bg-opacity-75 rounded p-2">
-                    <h5>Servicios</h5>
-                    <p>Préstamo, consulta y recursos en línea.</p>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#libraryCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#libraryCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
-    </div>
+<link rel="stylesheet" href="~/css/biblioteca-modern.css" />
 
-    <!-- Tarjetas con información rápida -->
-    <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Libros</h5>
-                    <p class="card-text">Catálogo con títulos, descripciones y disponibilidad.</p>
-                    <a class="btn btn-primary" href="/Libros">Ver catálogo</a>
-                </div>
-            </div>
+<!-- ACTIVIDAD 1: Hero Section con Flexbox -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1><i class="bi bi-book-fill"></i> Biblioteca Virtual</h1>
+        <p>Descubre miles de libros, autores destacados y recursos digitales al alcance de tu mano</p>
+        <div class="hero-buttons">
+            <a href="/Libros" class="btn btn-custom-primary">Explorar Catálogo</a>
+            <a href="/Home/About" class="btn btn-custom-outline">Conocer Más</a>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Autores</h5>
-                    <p class="card-text">Biografías y obras de autores destacados.</p>
-                    <a class="btn btn-outline-primary" href="/Autores">Explorar autores</a>
-                </div>
-            </div>
+    </div>
+</section>
+
+<div class="container mt-5">
+    <!-- ACTIVIDAD 1: Servicios principales con Flexbox -->
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <p class="section-subtitle">Ofrecemos una variedad de servicios diseñados para facilitar tu acceso al conocimiento</p>
+
+    <div class="services-flex-container">
+        <div class="service-card animate-fade-in">
+            <div class="service-icon"><i class="bi bi-journal-text"></i></div>
+            <h3>Catálogo Digital</h3>
+            <p>Accede a nuestro extenso catálogo de libros digitales y físicos. Miles de títulos organizados por categorías para facilitar tu búsqueda.</p>
+            <a href="/Libros" class="btn btn-primary">Ver Libros</a>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Categorías</h5>
-                    <p class="card-text">Encuentra libros por temática y género.</p>
-                    <a class="btn btn-primary" href="#">Ver categorías</a>
-                </div>
-            </div>
+
+        <div class="service-card animate-fade-in" style="animation-delay: 0.1s">
+            <div class="service-icon"><i class="bi bi-pen-fill"></i></div>
+            <h3>Autores Destacados</h3>
+            <p>Conoce la biografía y obras de autores nacionales e internacionales. Explora sus contribuciones a la literatura.</p>
+            <a href="/Autores" class="btn btn-primary">Ver Autores</a>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Servicios</h5>
-                    <p class="card-text">Préstamo, renovaciones y consulta en sala.</p>
-                    <a class="btn btn-outline-primary" href="#">Más info</a>
-                </div>
-            </div>
+
+        <div class="service-card animate-fade-in" style="animation-delay: 0.2s">
+            <div class="service-icon"><i class="bi bi-arrow-repeat"></i></div>
+            <h3>Préstamos</h3>
+            <p>Sistema de préstamo y renovación de materiales. Gestiona tus préstamos de manera sencilla y rápida.</p>
+            <a href="#" class="btn btn-primary">Solicitar</a>
+        </div>
+
+        <div class="service-card animate-fade-in" style="animation-delay: 0.3s">
+            <div class="service-icon"><i class="bi bi-search"></i></div>
+            <h3>Búsqueda Avanzada</h3>
+            <p>Herramientas de búsqueda avanzada para encontrar exactamente lo que necesitas en nuestra colección.</p>
+            <a href="#" class="btn btn-primary">Buscar</a>
         </div>
     </div>
 
-    <!-- Sección informativa con cards más grandes -->
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h4 class="card-title">Sobre nuestra Biblioteca</h4>
-                    <p class="card-text">Somos una biblioteca virtual creada como ejemplo didáctico. Disponemos de recursos electrónicos y físicos, y trabajamos para facilitar el acceso a la lectura y la investigación.</p>
-                    <p class="card-text"><small class="text-muted">Abierta: Lunes a Viernes, 9:00 - 18:00</small></p>
-                </div>
+    <!-- ACTIVIDAD 2: Libros Destacados con CSS Grid -->
+    <div class="divider"></div>
+
+    <h2 class="section-title">Libros Destacados</h2>
+    <p class="section-subtitle">Descubre las últimas incorporaciones y los títulos más populares de nuestra biblioteca</p>
+
+    <div class="featured-books-grid">
+        <div class="book-grid-item">
+            <img src="https://via.placeholder.com/250x200?text=Cien+Años+de+Soledad" alt="Libro 1" class="book-image">
+            <div class="book-content">
+                <h4>Cien Años de Soledad</h4>
+                <p class="book-author">Gabriel García Márquez</p>
+                <p class="book-description">Una obra maestra de la literatura latinoamericana que narra la historia de la familia Buendía.</p>
+            </div>
+            <div class="book-footer">
+                <span class="book-category">Novela</span>
+                <a href="/Libros" class="btn btn-sm btn-outline-primary">Ver más</a>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">Novedades</a>
-                <a href="#" class="list-group-item list-group-item-action">Eventos</a>
-                <a href="#" class="list-group-item list-group-item-action">Contacto</a>
+
+        <div class="book-grid-item">
+            <img src="https://via.placeholder.com/250x200?text=Don+Quijote" alt="Libro 2" class="book-image">
+            <div class="book-content">
+                <h4>Don Quijote de la Mancha</h4>
+                <p class="book-author">Miguel de Cervantes</p>
+                <p class="book-description">La obra cumbre de la literatura española que relata las aventuras de un hidalgo manchego.</p>
+            </div>
+            <div class="book-footer">
+                <span class="book-category">Clásico</span>
+                <a href="/Libros" class="btn btn-sm btn-outline-primary">Ver más</a>
+            </div>
+        </div>
+
+        <div class="book-grid-item">
+            <img src="https://via.placeholder.com/250x200?text=1984" alt="Libro 3" class="book-image">
+            <div class="book-content">
+                <h4>1984</h4>
+                <p class="book-author">George Orwell</p>
+                <p class="book-description">Una distopía que explora temas de vigilancia, control totalitario y manipulación de la verdad.</p>
+            </div>
+            <div class="book-footer">
+                <span class="book-category">Ciencia Ficción</span>
+                <a href="/Libros" class="btn btn-sm btn-outline-primary">Ver más</a>
+            </div>
+        </div>
+
+        <div class="book-grid-item">
+            <img src="https://via.placeholder.com/250x200?text=El+Principito" alt="Libro 4" class="book-image">
+            <div class="book-content">
+                <h4>El Principito</h4>
+                <p class="book-author">Antoine de Saint-Exupéry</p>
+                <p class="book-description">Un cuento poético que nos enseña sobre la amistad, el amor y el sentido de la vida.</p>
+            </div>
+            <div class="book-footer">
+                <span class="book-category">Infantil</span>
+                <a href="/Libros" class="btn btn-sm btn-outline-primary">Ver más</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTIVIDAD 2: Categorías con CSS Grid -->
+    <div class="divider"></div>
+
+    <h2 class="section-title">Explora por Categorías</h2>
+    <p class="section-subtitle">Navega por nuestras colecciones temáticas organizadas</p>
+
+    <div class="categories-grid">
+        <div class="category-item">
+            <div class="category-icon"><i class="bi bi-book"></i></div>
+            <h4>Literatura</h4>
+        </div>
+        <div class="category-item">
+            <div class="category-icon"><i class="bi bi-grid-3x3-gap"></i></div>
+            <h4>Ciencia</h4>
+        </div>
+        <div class="category-item">
+            <div class="category-icon"><i class="bi bi-palette"></i></div>
+            <h4>Arte</h4>
+        </div>
+        <div class="category-item">
+            <div class="category-icon"><i class="bi bi-clock-history"></i></div>
+            <h4>Historia</h4>
+        </div>
+        <div class="category-item">
+            <div class="category-icon"><i class="bi bi-laptop"></i></div>
+            <h4>Tecnología</h4>
+        </div>
+        <div class="category-item">
+            <div class="category-icon"><i class="bi bi-globe"></i></div>
+            <h4>Geografía</h4>
+        </div>
+        <div class="category-item">
+            <div class="category-icon"><i class="bi bi-mask"></i></div>
+            <h4>Teatro</h4>
+        </div>
+        <div class="category-item">
+            <div class="category-icon"><i class="bi bi-journal-bookmark"></i></div>
+            <h4>Poesía</h4>
+        </div>
+    </div>
+
+    <!-- ACTIVIDAD 3: Sección adaptable con estadísticas -->
+    <div class="divider"></div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card">
+                <div class="stat-number">5,000+</div>
+                <div class="stat-label">Libros</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card" style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%);">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Autores</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                <div class="stat-number">10,000+</div>
+                <div class="stat-label">Usuarios</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Disponible</div>
             </div>
         </div>
     </div>

@@ -1,45 +1,214 @@
 @{
-    ViewData["Title"] = "Acerca de";
+    ViewData["Title"] = "Acerca de - Biblioteca Virtual";
 }
 
-<main class="container about-page mt-4">
-    <header class="about-header mb-3">
-        <h1>Acerca de la Biblioteca Virtual</h1>
-        <p class="lead">Una breve descripción de la misión, la colección y los servicios.</p>
-    </header>
+<link rel="stylesheet" href="~/css/biblioteca-modern.css" />
 
-    <section class="about-mission mb-4">
-        <h2>Misión</h2>
-        <p>Nuestra misión es ofrecer acceso libre y organizado a recursos informativos y culturales, fomentando la lectura y la investigación.</p>
-    </section>
+<div class="container mt-5">
+    <h1 class="section-title">Acerca de la Biblioteca Virtual</h1>
+    <p class="section-subtitle">Conoce nuestra misión, valores y servicios</p>
 
-    <section class="about-collection mb-4">
-        <h2>Colección</h2>
-        <article>
-            <h3>Libros y recursos</h3>
-            <p>Contamos con una colección diversa que incluye libros impresos, ebooks, artículos y material multimedia.</p>
-        </article>
-        <article>
-            <h3>Autores</h3>
-            <p>Trabajamos con autores locales y reconocidos internacionalmente para mantener una colección representativa.</p>
-        </article>
-    </section>
+    <div class="divider"></div>
 
-    <section class="about-services mb-4">
-        <h2>Servicios</h2>
-        <ul>
-            <li>Préstamo y renovación de materiales</li>
-            <li>Asesoría en búsquedas bibliográficas</li>
-            <li>Acceso a recursos digitales y bases de datos</li>
-        </ul>
-    </section>
+    <!-- ACTIVIDAD 4: Componentes Reutilizables - Tarjetas de Información -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-6">
+            <div class="info-card">
+                <div class="info-card-header">
+                    <div class="info-card-icon"><i class="bi bi-bullseye"></i></div>
+                    <h3 class="info-card-title">Nuestra Misión</h3>
+                </div>
+                <div class="info-card-body">
+                    <p>Ofrecer acceso libre y organizado a recursos informativos y culturales de calidad, fomentando la lectura, la investigación y el desarrollo intelectual de nuestra comunidad.</p>
+                    <p>Nos comprometemos a democratizar el conocimiento y promover la cultura mediante servicios bibliotecarios innovadores y accesibles para todos.</p>
+                </div>
+                <div class="info-card-footer">
+                    <span class="badge-custom badge-primary">Educación</span>
+                    <span class="badge-custom badge-success">Cultura</span>
+                </div>
+            </div>
+        </div>
 
-    <section class="about-contact mb-4">
-        <h2>Contacto</h2>
-        <address>
-            Biblioteca Virtual<br />
-            Calle Falsa 123<br />
-            Email: <a href="mailto:info@biblioteca.local">info@biblioteca.local</a>
-        </address>
-    </section>
-</main>
+        <div class="col-md-6">
+            <div class="info-card">
+                <div class="info-card-header">
+                    <div class="info-card-icon"><i class="bi bi-eye"></i></div>
+                    <h3 class="info-card-title">Nuestra Visión</h3>
+                </div>
+                <div class="info-card-body">
+                    <p>Ser la biblioteca virtual de referencia en la región, reconocida por la calidad de nuestros servicios, la innovación tecnológica y el compromiso con la comunidad.</p>
+                    <p>Aspiramos a transformar vidas a través del acceso al conocimiento y la promoción de la lectura como herramienta de desarrollo personal y social.</p>
+                </div>
+                <div class="info-card-footer">
+                    <span class="badge-custom badge-warning">Innovación</span>
+                    <span class="badge-custom badge-primary">Excelencia</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTIVIDAD 4: Componentes Reutilizables - Feature Boxes -->
+    <h2 class="section-title mb-4">Nuestros Servicios</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="feature-box">
+                <div class="feature-icon"><i class="bi bi-book-half"></i></div>
+                <div class="feature-content">
+                    <h4>Colección Diversa</h4>
+                    <p>Contamos con una colección diversa que incluye libros impresos, ebooks, artículos académicos, revistas y material multimedia en múltiples idiomas y temáticas.</p>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-icon"><i class="bi bi-arrow-repeat"></i></div>
+                <div class="feature-content">
+                    <h4>Préstamo y Renovación</h4>
+                    <p>Sistema automatizado de préstamo y renovación de materiales con notificaciones por correo electrónico y gestión en línea las 24 horas del día.</p>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-icon"><i class="bi bi-mortarboard"></i></div>
+                <div class="feature-content">
+                    <h4>Asesoría Bibliográfica</h4>
+                    <p>Personal especializado disponible para orientarte en búsquedas bibliográficas, referencias y metodología de investigación académica.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="feature-box">
+                <div class="feature-icon"><i class="bi bi-laptop"></i></div>
+                <div class="feature-content">
+                    <h4>Recursos Digitales</h4>
+                    <p>Acceso a bases de datos especializadas, repositorios académicos y plataformas de aprendizaje en línea con contenido actualizado constantemente.</p>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-icon"><i class="bi bi-building"></i></div>
+                <div class="feature-content">
+                    <h4>Sala de Lectura</h4>
+                    <p>Espacios cómodos y silenciosos para lectura individual y estudio, equipados con conexión WiFi de alta velocidad y puntos de carga.</p>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-icon"><i class="bi bi-calendar-event"></i></div>
+                <div class="feature-content">
+                    <h4>Eventos Culturales</h4>
+                    <p>Organizamos regularmente presentaciones de libros, talleres literarios, clubes de lectura y actividades culturales para toda la familia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Sección de Autores con componentes reutilizables -->
+    <h2 class="section-title mb-4">Trabajamos con los Mejores</h2>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="info-card">
+                <div class="info-card-header">
+                    <div class="info-card-icon"><i class="bi bi-pen"></i></div>
+                    <h3 class="info-card-title">Autores Locales</h3>
+                </div>
+                <div class="info-card-body">
+                    <p>Promovemos y difundimos la obra de autores nacionales y regionales, apoyando el talento local y preservando nuestra identidad cultural.</p>
+                </div>
+                <div class="info-card-footer">
+                    <span class="badge-custom badge-success">Local</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="info-card">
+                <div class="info-card-header">
+                    <div class="info-card-icon"><i class="bi bi-globe-americas"></i></div>
+                    <h3 class="info-card-title">Autores Internacionales</h3>
+                </div>
+                <div class="info-card-body">
+                    <p>Mantenemos una colección representativa de autores reconocidos internacionalmente que enriquecen nuestra oferta bibliográfica.</p>
+                </div>
+                <div class="info-card-footer">
+                    <span class="badge-custom badge-primary">Global</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="info-card">
+                <div class="info-card-header">
+                    <div class="info-card-icon"><i class="bi bi-star-fill"></i></div>
+                    <h3 class="info-card-title">Nuevos Talentos</h3>
+                </div>
+                <div class="info-card-body">
+                    <p>Brindamos espacio a nuevos escritores emergentes, apoyando la diversidad de voces y perspectivas en la literatura contemporánea.</p>
+                </div>
+                <div class="info-card-footer">
+                    <span class="badge-custom badge-warning">Emergente</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Contacto -->
+    <div class="row mb-5">
+        <div class="col-md-8 mx-auto">
+            <div class="info-card" style="border-top-color: #e74c3c;">
+                <div class="info-card-header">
+                    <div class="info-card-icon" style="color: #e74c3c;"><i class="bi bi-envelope"></i></div>
+                    <h3 class="info-card-title">Contacto</h3>
+                </div>
+                <div class="info-card-body">
+                    <address style="font-style: normal;">
+                        <strong>Biblioteca Virtual</strong><br />
+                        Calle Falsa 123<br />
+                        Ciudad, País<br />
+                        <br />
+                        <strong>Email:</strong> <a href="mailto:info@biblioteca.local">info@biblioteca.local</a><br />
+                        <strong>Teléfono:</strong> +123 456 7890<br />
+                        <strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00
+                    </address>
+                </div>
+                <div class="info-card-footer">
+                    <a href="#" class="btn btn-primary">Enviar Mensaje</a>
+                    <span class="badge-custom badge-success">Abierto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Valores institucionales con flexbox -->
+    <h2 class="section-title mb-4">Nuestros Valores</h2>
+
+    <div class="services-flex-container">
+        <div class="service-card">
+            <div class="service-icon"><i class="bi bi-gem"></i></div>
+            <h3>Excelencia</h3>
+            <p>Nos esforzamos por ofrecer servicios de la más alta calidad y superar las expectativas de nuestros usuarios.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i class="bi bi-people"></i></div>
+            <h3>Inclusión</h3>
+            <p>Garantizamos el acceso equitativo a la información y el conocimiento para todos los miembros de la comunidad.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i class="bi bi-rocket-takeoff"></i></div>
+            <h3>Innovación</h3>
+            <p>Adoptamos nuevas tecnologías y metodologías para mejorar continuamente nuestros servicios.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i class="bi bi-tree"></i></div>
+            <h3>Sostenibilidad</h3>
+            <p>Promovemos prácticas responsables que contribuyen al desarrollo sostenible de nuestra comunidad.</p>
+        </div>
+    </div>
+</div>
