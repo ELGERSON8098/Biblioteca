@@ -3,6 +3,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Registrar IAutorService -> AutorService (Scoped)
+builder.Services.AddScoped<Biblioteca.Services.IAutorService, Biblioteca.Services.AutorService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
