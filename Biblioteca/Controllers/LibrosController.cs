@@ -2,39 +2,37 @@ using Biblioteca.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
-using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Biblioteca.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Biblioteca.Controllers
 {
     public class LibrosController : Controller
     {
         private readonly IWebHostEnvironment _env;
+        private readonly BibliotecaContext _context;
 
-        // Lista en memoria para el ejemplo
-        private static List<Libro> _libros = new List<Libro>
-        {
-            new Libro { ID = 1, Titulo = "Cien Años de Soledad", Autor = "Gabriel García Márquez", Categoria = "Novela", AnioPublicacion = 1967, Descripcion = "Clásico de la literatura latinoamericana.", ImagenUrl = null },
-            new Libro { ID = 2, Titulo = "La ciudad y los perros", Autor = "Mario Vargas Llosa", Categoria = "Novela", AnioPublicacion = 1963, Descripcion = "Novela sobre la vida en un colegio militar.", ImagenUrl = null }
-        };
-
-        public LibrosController(IWebHostEnvironment env)
+        public LibrosController(IWebHostEnvironment env, BibliotecaContext context)
         {
             _env = env;
+            _context = context;
         }
 
         // GET: Libros
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_libros);
+            var libros = await _context.Libros.ToListAsync();
+            return View(libros);
         }
 
         // GET: Libros/Details/5
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var libro = _libros.Find(l => l.ID == id);
+            var libro = await _context.Libros.FindAsync(id);
             if (libro == null) return NotFound();
             return View(libro);
         }
@@ -48,7 +46,7 @@ namespace Biblioteca.Controllers
         // POST: Libros/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Libro model, IFormFile imagen)
+        public async Task<IActionResult> Create(Libro model, IFormFile imagen)
         {
             if (!ModelState.IsValid) return View(model);
 
@@ -62,21 +60,23 @@ namespace Biblioteca.Controllers
                 var filePath = Path.Combine(uploads, fileName);
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    imagen.CopyTo(stream);
+                    await imagen.CopyToAsync(stream);
                 }
                 model.ImagenUrl = "/images/" + fileName;
             }
 
-            // Asignar ID
-            model.ID = _libros.Any() ? _libros.Max(l => l.ID) + 1 : 1;
-            _libros.Add(model);
+            // Agregar a la base de datos
+            _context.Libros.Add(model);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Libro agregado correctamente.";
             return RedirectToAction(nameof(Index));
         }
 
         // GET: Libros/Edit/5
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var libro = _libros.Find(l => l.ID == id);
+            var libro = await _context.Libros.FindAsync(id);
             if (libro == null) return NotFound();
             return View(libro);
         }
@@ -84,12 +84,12 @@ namespace Biblioteca.Controllers
         // POST: Libros/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Libro model, IFormFile imagen)
+        public async Task<IActionResult> Edit(int id, Libro model, IFormFile imagen)
         {
             if (id != model.ID) return BadRequest();
             if (!ModelState.IsValid) return View(model);
 
-            var libro = _libros.Find(l => l.ID == id);
+            var libro = await _context.Libros.FindAsync(id);
             if (libro == null) return NotFound();
 
             // Si se sube nueva imagen, reemplazar
@@ -102,7 +102,7 @@ namespace Biblioteca.Controllers
                 var filePath = Path.Combine(uploads, fileName);
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    imagen.CopyTo(stream);
+                    await imagen.CopyToAsync(stream);
                 }
                 model.ImagenUrl = "/images/" + fileName;
             }
@@ -115,13 +115,17 @@ namespace Biblioteca.Controllers
             libro.Descripcion = model.Descripcion;
             if (!string.IsNullOrEmpty(model.ImagenUrl)) libro.ImagenUrl = model.ImagenUrl;
 
+            _context.Libros.Update(libro);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Libro actualizado correctamente.";
             return RedirectToAction(nameof(Index));
         }
 
         // GET: Libros/Delete/5
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var libro = _libros.Find(l => l.ID == id);
+            var libro = await _context.Libros.FindAsync(id);
             if (libro == null) return NotFound();
             return View(libro);
         }
@@ -129,11 +133,13 @@ namespace Biblioteca.Controllers
         // POST: Libros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var libro = _libros.Find(l => l.ID == id);
+            var libro = await _context.Libros.FindAsync(id);
             if (libro == null) return NotFound();
-            _libros.Remove(libro);
+            _context.Libros.Remove(libro);
+            await _context.SaveChangesAsync();
+            TempData["Success"] = "Libro eliminado correctamente.";
             return RedirectToAction(nameof(Index));
         }
     }

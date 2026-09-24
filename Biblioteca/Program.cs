@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Biblioteca.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +8,10 @@ builder.Services.AddControllersWithViews();
 
 // Registrar IAutorService -> AutorService (Scoped)
 builder.Services.AddScoped<Biblioteca.Services.IAutorService, Biblioteca.Services.AutorService>();
+
+// Registrar DbContext con SQL Server
+var connectionString = builder.Configuration.GetConnectionString("BibliotecaConnection");
+builder.Services.AddDbContext<BibliotecaContext>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
