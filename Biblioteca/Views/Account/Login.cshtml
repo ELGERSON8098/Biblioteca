@@ -1,0 +1,45 @@
+@model Biblioteca.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Iniciar sesión";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title mb-3">Iniciar sesión</h3>
+
+                    <form asp-action="Login" method="post">
+                        @Html.AntiForgeryToken()
+                        <div asp-validation-summary="All" class="text-danger mb-2"></div>
+                        <div class="mb-3">
+                            <label asp-for="UserOrEmail" class="form-label"></label>
+                            <input asp-for="UserOrEmail" class="form-control" />
+                            <span asp-validation-for="UserOrEmail" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input asp-for="RememberMe" class="form-check-input" />
+                            <label asp-for="RememberMe" class="form-check-label"></label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                        <a asp-action="Register" class="btn btn-link ms-2">Registrarse</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

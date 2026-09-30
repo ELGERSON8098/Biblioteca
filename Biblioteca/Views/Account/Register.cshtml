@@ -1,0 +1,52 @@
+@model Biblioteca.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title mb-3">Registro de usuario</h3>
+
+                    <form asp-action="Register" method="post">
+                        @Html.AntiForgeryToken()
+                        <div asp-validation-summary="All" class="text-danger mb-2"></div>
+                        <div class="mb-3">
+                            <label asp-for="UserName" class="form-label"></label>
+                            <input asp-for="UserName" class="form-control" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ConfirmPassword" class="form-label"></label>
+                            <input asp-for="ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <a asp-action="Login" class="btn btn-link ms-2">Iniciar sesión</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
