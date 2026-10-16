@@ -101,5 +101,12 @@ namespace Biblioteca.Controllers
             TempData["Success"] = "Sesión finalizada.";
             return RedirectToAction("Index", "Home");
         }
+
+        // GET: /Account/AccessDenied
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

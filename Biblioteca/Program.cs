@@ -25,22 +25,58 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     .AddEntityFrameworkStores<BibliotecaContext>()
     .AddDefaultTokenProviders();
 
+// Configurar rutas de Identity para autorización (acceso denegado / login)
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+});
+
 var app = builder.Build();
 
-// Crear usuario de prueba si no existe (seeding)
+// Crear roles y usuarios de prueba si no existen (seeding)
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
     {
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
         var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+
+        // Crear roles
+        string[] roles = { "Administrador", "Usuario" };
+        foreach (var roleName in roles)
+        {
+            if (!roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult())
+            {
+                roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult();
+            }
+        }
+
+        // Usuario Administrador de prueba
+        var adminEmail = "admin@example.com";
+        var adminUser = userManager.FindByEmailAsync(adminEmail).GetAwaiter().GetResult();
+        if (adminUser == null)
+        {
+            adminUser = new IdentityUser { UserName = "admin", Email = adminEmail, EmailConfirmed = true };
+            userManager.CreateAsync(adminUser, "Admin1234").GetAwaiter().GetResult();
+        }
+        if (!userManager.IsInRoleAsync(adminUser, "Administrador").GetAwaiter().GetResult())
+        {
+            userManager.AddToRoleAsync(adminUser, "Administrador").GetAwaiter().GetResult();
+        }
+
+        // Usuario estándar de prueba
         var testEmail = "test@example.com";
         var testUser = userManager.FindByEmailAsync(testEmail).GetAwaiter().GetResult();
         if (testUser == null)
         {
-            var user = new IdentityUser { UserName = "testuser", Email = testEmail, EmailConfirmed = true };
-            var result = userManager.CreateAsync(user, "Test1234").GetAwaiter().GetResult();
-            // no hacemos nada si falla; se puede revisar en logs
+            testUser = new IdentityUser { UserName = "testuser", Email = testEmail, EmailConfirmed = true };
+            userManager.CreateAsync(testUser, "Test1234").GetAwaiter().GetResult();
+        }
+        if (!userManager.IsInRoleAsync(testUser, "Usuario").GetAwaiter().GetResult())
+        {
+            userManager.AddToRoleAsync(testUser, "Usuario").GetAwaiter().GetResult();
         }
     }
     catch
