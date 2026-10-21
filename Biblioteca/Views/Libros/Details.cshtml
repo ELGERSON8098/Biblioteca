@@ -30,7 +30,7 @@
             </dl>
 
             <a asp-action="Index" class="btn btn-secondary">Volver</a>
-            @if (User.IsInRole("Administrador"))
+            @if (User.IsInRole("Admin") || User.IsInRole("Bibliotecario"))
             {
                 <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-outline-secondary ms-2">Editar</a>
                 <a asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-outline-danger ms-2">Eliminar</a>

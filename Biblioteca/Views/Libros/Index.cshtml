@@ -7,7 +7,7 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
         <h2>Libros</h2>
-        @if (User.IsInRole("Administrador"))
+        @if (User.IsInRole("Admin") || User.IsInRole("Bibliotecario"))
         {
             <a asp-action="Create" class="btn btn-primary">Agregar libro</a>
         }
@@ -28,7 +28,7 @@
                         <p class="card-text">@libro.Descripcion</p>
                         <div class="mt-auto">
                             <a asp-action="Details" asp-route-id="@libro.ID" class="btn btn-sm btn-outline-primary">Ver</a>
-                            @if (User.IsInRole("Administrador"))
+                            @if (User.IsInRole("Admin") || User.IsInRole("Bibliotecario"))
                             {
                                 <a asp-action="Edit" asp-route-id="@libro.ID" class="btn btn-sm btn-outline-secondary ms-2">Editar</a>
                                 <a asp-action="Delete" asp-route-id="@libro.ID" class="btn btn-sm btn-outline-danger ms-2">Eliminar</a>

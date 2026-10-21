@@ -44,7 +44,7 @@ using (var scope = app.Services.CreateScope())
         var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
 
         // Crear roles
-        string[] roles = { "Administrador", "Usuario" };
+        string[] roles = { "Admin", "Bibliotecario", "Usuario" };
         foreach (var roleName in roles)
         {
             if (!roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult())
@@ -53,7 +53,7 @@ using (var scope = app.Services.CreateScope())
             }
         }
 
-        // Usuario Administrador de prueba
+        // Usuario Admin de prueba
         var adminEmail = "admin@example.com";
         var adminUser = userManager.FindByEmailAsync(adminEmail).GetAwaiter().GetResult();
         if (adminUser == null)
@@ -61,9 +61,22 @@ using (var scope = app.Services.CreateScope())
             adminUser = new IdentityUser { UserName = "admin", Email = adminEmail, EmailConfirmed = true };
             userManager.CreateAsync(adminUser, "Admin1234").GetAwaiter().GetResult();
         }
-        if (!userManager.IsInRoleAsync(adminUser, "Administrador").GetAwaiter().GetResult())
+        if (!userManager.IsInRoleAsync(adminUser, "Admin").GetAwaiter().GetResult())
         {
-            userManager.AddToRoleAsync(adminUser, "Administrador").GetAwaiter().GetResult();
+            userManager.AddToRoleAsync(adminUser, "Admin").GetAwaiter().GetResult();
+        }
+
+        // Usuario Bibliotecario de prueba
+        var bibliotecarioEmail = "bibliotecario@example.com";
+        var bibliotecarioUser = userManager.FindByEmailAsync(bibliotecarioEmail).GetAwaiter().GetResult();
+        if (bibliotecarioUser == null)
+        {
+            bibliotecarioUser = new IdentityUser { UserName = "bibliotecario", Email = bibliotecarioEmail, EmailConfirmed = true };
+            userManager.CreateAsync(bibliotecarioUser, "Biblio1234").GetAwaiter().GetResult();
+        }
+        if (!userManager.IsInRoleAsync(bibliotecarioUser, "Bibliotecario").GetAwaiter().GetResult())
+        {
+            userManager.AddToRoleAsync(bibliotecarioUser, "Bibliotecario").GetAwaiter().GetResult();
         }
 
         // Usuario estándar de prueba
